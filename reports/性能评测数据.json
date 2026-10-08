@@ -1,0 +1,199 @@
+{
+  "corpus": "./data/papers_transformer",
+  "num_docs": 10,
+  "eval_size": 50,
+  "chunk_size": 256,
+  "retrieval": [
+    {
+      "档位": "纯向量",
+      "Hit@1": 0.92,
+      "Hit@3": 0.98,
+      "Hit@5": 0.98,
+      "MRR": 0.9467,
+      "Recall@5": 0.98,
+      "块数": 47
+    },
+    {
+      "档位": "混合检索(RRF)",
+      "Hit@1": 0.94,
+      "Hit@3": 0.98,
+      "Hit@5": 0.98,
+      "MRR": 0.96,
+      "Recall@5": 0.98,
+      "块数": 47
+    },
+    {
+      "档位": "混合+重排序",
+      "Hit@1": 0.96,
+      "Hit@3": 0.98,
+      "Hit@5": 0.98,
+      "MRR": 0.97,
+      "Recall@5": 0.98,
+      "块数": 47
+    }
+  ],
+  "chunking": [
+    {
+      "strategy": "fixed",
+      "chunk_size": 256,
+      "num_chunks": 30,
+      "avg_len": 258.1,
+      "max_len": 318,
+      "min_len": 228,
+      "std_len": 25.1,
+      "short_ratio": 0.0,
+      "elapsed_s": 0.0001,
+      "avg_tokens": 183.4
+    },
+    {
+      "strategy": "fixed",
+      "chunk_size": 512,
+      "num_chunks": 20,
+      "avg_len": 386.9,
+      "max_len": 511,
+      "min_len": 236,
+      "std_len": 122.0,
+      "short_ratio": 0.0,
+      "elapsed_s": 0.0001,
+      "avg_tokens": 270.4
+    },
+    {
+      "strategy": "fixed",
+      "chunk_size": 1024,
+      "num_chunks": 10,
+      "avg_len": 713.9,
+      "max_len": 743,
+      "min_len": 684,
+      "std_len": 20.0,
+      "short_ratio": 0.0,
+      "elapsed_s": 0.0001,
+      "avg_tokens": 507.3
+    },
+    {
+      "strategy": "recursive",
+      "chunk_size": 256,
+      "num_chunks": 47,
+      "avg_len": 175.4,
+      "max_len": 280,
+      "min_len": 94,
+      "std_len": 56.4,
+      "short_ratio": 0.0,
+      "elapsed_s": 0.0002,
+      "avg_tokens": 127.0
+    },
+    {
+      "strategy": "recursive",
+      "chunk_size": 512,
+      "num_chunks": 20,
+      "avg_len": 387.9,
+      "max_len": 447,
+      "min_len": 311,
+      "std_len": 36.1,
+      "short_ratio": 0.0,
+      "elapsed_s": 0.0001,
+      "avg_tokens": 277.9
+    },
+    {
+      "strategy": "recursive",
+      "chunk_size": 1024,
+      "num_chunks": 10,
+      "avg_len": 713.9,
+      "max_len": 743,
+      "min_len": 684,
+      "std_len": 20.0,
+      "short_ratio": 0.0,
+      "elapsed_s": 0.0,
+      "avg_tokens": 507.3
+    },
+    {
+      "strategy": "semantic",
+      "chunk_size": 256,
+      "num_chunks": 113,
+      "avg_len": 61.9,
+      "max_len": 184,
+      "min_len": 18,
+      "std_len": 33.0,
+      "short_ratio": 0.7876,
+      "elapsed_s": 0.004,
+      "avg_tokens": 44.6
+    },
+    {
+      "strategy": "semantic",
+      "chunk_size": 512,
+      "num_chunks": 113,
+      "avg_len": 61.9,
+      "max_len": 184,
+      "min_len": 18,
+      "std_len": 33.0,
+      "short_ratio": 0.7876,
+      "elapsed_s": 0.0015,
+      "avg_tokens": 44.6
+    },
+    {
+      "strategy": "semantic",
+      "chunk_size": 1024,
+      "num_chunks": 113,
+      "avg_len": 61.9,
+      "max_len": 184,
+      "min_len": 18,
+      "std_len": 33.0,
+      "short_ratio": 0.7876,
+      "elapsed_s": 0.0016,
+      "avg_tokens": 44.6
+    },
+    {
+      "strategy": "academic",
+      "chunk_size": 256,
+      "num_chunks": 64,
+      "avg_len": 110.4,
+      "max_len": 248,
+      "min_len": 18,
+      "std_len": 62.7,
+      "short_ratio": 0.3906,
+      "elapsed_s": 0.0007,
+      "avg_tokens": 79.3
+    },
+    {
+      "strategy": "academic",
+      "chunk_size": 512,
+      "num_chunks": 63,
+      "avg_len": 111.6,
+      "max_len": 257,
+      "min_len": 18,
+      "std_len": 64.8,
+      "short_ratio": 0.3968,
+      "elapsed_s": 0.0006,
+      "avg_tokens": 80.3
+    },
+    {
+      "strategy": "academic",
+      "chunk_size": 1024,
+      "num_chunks": 63,
+      "avg_len": 111.6,
+      "max_len": 257,
+      "min_len": 18,
+      "std_len": 64.8,
+      "short_ratio": 0.3968,
+      "elapsed_s": 0.0005,
+      "avg_tokens": 80.3
+    }
+  ],
+  "bad_cases": [
+    {
+      "question": "两种基于Transformer的视觉模型在任务目标、架构设计和关键性能结果上有何差异？",
+      "type": "对比性",
+      "hit": 0.0,
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.0,
+      "hit@1": 0.0,
+      "top1": "5adf8bc01641d7d7",
+      "top1_score": 0.6962,
+      "relevant": [
+        "03cba1be0e7fbfe7",
+        "48ff36c4fc4e6c18"
+      ],
+      "is_bad_case": true
+    }
+  ]
+}

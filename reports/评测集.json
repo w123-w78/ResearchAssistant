@@ -1,0 +1,472 @@
+{
+  "_说明": "由 build_evalset.py 自动生成。relevant_titles 用于关联文档，评测时由 benchmark 按标题映射到 doc_id。",
+  "_题型说明": {
+    "事实性": "单篇可答",
+    "归纳性": "跨篇归纳",
+    "推理性": "需推断原因",
+    "对比性": "两篇对比"
+  },
+  "num_questions": 50,
+  "questions": [
+    {
+      "id": 1,
+      "type": "事实性",
+      "question": "将卷积模块嵌入 Transformer 块的语音识别模型在 LibriSpeech 上的词错误率是多少？",
+      "answer": "其 test-clean/test-other 词错误率为 2.1%/4.3%，相对 Transformer 基线降低 17%。",
+      "relevant_titles": [
+        "Conformer：卷积增强的语音识别 Transformer"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "事实性",
+      "question": "这种卷积增强语音识别 Transformer 的卷积模块采用什么结构配置？",
+      "answer": "卷积模块采用深度可分离卷积，核大小为 31，并带有 GLU 门控。",
+      "relevant_titles": [
+        "Conformer：卷积增强的语音识别 Transformer"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "归纳性",
+      "question": "从消融实验看，为什么卷积模块对这种语音识别模型很重要？",
+      "answer": "去掉卷积模块后 LibriSpeech 词错误率从 2.1%/4.3% 恶化至 2.4%/5.0%，说明卷积增强了局部特征提取能力。",
+      "relevant_titles": [
+        "Conformer：卷积增强的语音识别 Transformer"
+      ]
+    },
+    {
+      "id": 4,
+      "type": "推理性",
+      "question": "如果将卷积核大小从 31 减小到 3，模型性能可能发生什么变化？",
+      "answer": "局部感受野变窄会导致词错误率上升约 0.2 个点，说明较大卷积核有助于捕获更丰富的局部语音特征。",
+      "relevant_titles": [
+        "Conformer：卷积增强的语音识别 Transformer"
+      ]
+    },
+    {
+      "id": 5,
+      "type": "事实性",
+      "question": "哪种端到端目标检测方法将检测重构为集合预测并去掉锚框与NMS，在COCO上达到42.0 AP？",
+      "answer": "该方法在COCO上达到42.0 AP，与优化良好的Faster R-CNN基线持平。",
+      "relevant_titles": [
+        "DETR：基于 Transformer 的端到端目标检测"
+      ]
+    },
+    {
+      "id": 6,
+      "type": "事实性",
+      "question": "该方法的匈牙利匹配代价由哪些损失构成，权重分别是多少？",
+      "answer": "匹配代价由分类损失、L1框损失与GIoU损失加权构成，权重为1:5:2。",
+      "relevant_titles": [
+        "DETR：基于 Transformer 的端到端目标检测"
+      ]
+    },
+    {
+      "id": 7,
+      "type": "归纳性",
+      "question": "从实验结果归纳，该方法在小目标和大目标上的表现有什么差异？",
+      "answer": "小目标AP仅20.5，低于Faster R-CNN的24.2；大目标AP达61.1，明显优于基线。",
+      "relevant_titles": [
+        "DETR：基于 Transformer 的端到端目标检测"
+      ]
+    },
+    {
+      "id": 8,
+      "type": "推理性",
+      "question": "消融实验显示去掉Transformer编码器后AP下降3.9，这说明编码器在模型中起到什么作用？",
+      "answer": "这说明Transformer编码器对整体检测性能有显著贡献，去掉后AP下降3.9。",
+      "relevant_titles": [
+        "DETR：基于 Transformer 的端到端目标检测"
+      ]
+    },
+    {
+      "id": 9,
+      "type": "事实性",
+      "question": "在QM9的HOMO能级预测中，该图Transformer模型将MAE降低到了多少？",
+      "answer": "该模型在QM9的HOMO能级预测上将MAE降至0.0325 eV。",
+      "relevant_titles": [
+        "Graphormer：图 Transformer 用于分子性质预测"
+      ]
+    },
+    {
+      "id": 10,
+      "type": "事实性",
+      "question": "该模型采用了多少层Transformer、隐藏维度和注意力头数？",
+      "answer": "模型为12层Transformer，隐藏维度768，32个注意力头。",
+      "relevant_titles": [
+        "Graphormer：图 Transformer 用于分子性质预测"
+      ]
+    },
+    {
+      "id": 11,
+      "type": "归纳性",
+      "question": "该模型通过哪三类结构编码向Transformer注入图结构信息？",
+      "answer": "三类结构编码分别是中心性编码、空间编码和边编码；中心性编码按节点度数注入节点重要性，空间编码用最短路径距离作为注意力偏置，边编码沿最短路径对边特征加权平均。",
+      "relevant_titles": [
+        "Graphormer：图 Transformer 用于分子性质预测"
+      ]
+    },
+    {
+      "id": 12,
+      "type": "推理性",
+      "question": "根据消融实验，哪类结构编码对量子化学性质预测影响最大，依据是什么？",
+      "answer": "空间编码影响最大，因为去掉空间编码后MAE从0.0325 eV恶化至0.0455 eV，而去掉边编码仅恶化0.0031 eV。",
+      "relevant_titles": [
+        "Graphormer：图 Transformer 用于分子性质预测"
+      ]
+    },
+    {
+      "id": 13,
+      "type": "事实性",
+      "question": "该三维点云方法在S3DIS Area5语义分割任务上的mIoU是多少？",
+      "answer": "该方法在S3DIS Area5语义分割上的mIoU为70.4%。",
+      "relevant_titles": [
+        "Point Transformer：三维点云分析"
+      ]
+    },
+    {
+      "id": 14,
+      "type": "事实性",
+      "question": "该三维点云方法训练时使用了哪些优化器、学习率、batch size和epoch设置？",
+      "answer": "训练使用AdamW优化器，学习率为5e-4，batch size为16，共训练100个epoch。",
+      "relevant_titles": [
+        "Point Transformer：三维点云分析"
+      ]
+    },
+    {
+      "id": 15,
+      "type": "归纳性",
+      "question": "该三维点云方法如何设计注意力机制以适应无序点集？",
+      "answer": "该方法采用向量自注意力，用两点坐标差经MLP映射得到的位置编码向量调制注意力权重，并在局部邻域内计算注意力。",
+      "relevant_titles": [
+        "Point Transformer：三维点云分析"
+      ]
+    },
+    {
+      "id": 16,
+      "type": "推理性",
+      "question": "如果在该三维点云方法中去掉位置编码调制，会对S3DIS分割性能产生什么影响？",
+      "answer": "消融实验显示，去掉位置编码调制后mIoU从70.4%降至61.2%，说明相对位置调制是该方法保持性能的关键。",
+      "relevant_titles": [
+        "Point Transformer：三维点云分析"
+      ]
+    },
+    {
+      "id": 17,
+      "type": "事实性",
+      "question": "在预测长度720步时，所提模型相比Informer在误差和推理速度上有什么变化？",
+      "answer": "预测长度720步时，所提模型MSE相比Informer降低19.3%，推理速度提升2.8倍。",
+      "relevant_titles": [
+        "SparseTS：稀疏注意力长序列时间序列预测"
+      ]
+    },
+    {
+      "id": 18,
+      "type": "事实性",
+      "question": "该模型中每个查询与多少个相似键计算注意力，复杂度降到什么级别？",
+      "answer": "每个查询只与Top-32相似键计算注意力，复杂度降为O(n log n)。",
+      "relevant_titles": [
+        "SparseTS：稀疏注意力长序列时间序列预测"
+      ]
+    },
+    {
+      "id": 19,
+      "type": "归纳性",
+      "question": "该模型为降低长序列预测复杂度采用了哪三项核心设计？",
+      "answer": "采用稀疏注意力、序列分解和蒸馏压缩三项设计，其中稀疏注意力限制Top-32键，序列分解分别建模趋势与季节，蒸馏压缩每两层进行2倍下采样。",
+      "relevant_titles": [
+        "SparseTS：稀疏注意力长序列时间序列预测"
+      ]
+    },
+    {
+      "id": 20,
+      "type": "推理性",
+      "question": "若仅降低注意力Top-K数量而不使用趋势/季节分解，长序列预测性能提升是否可能有限？依据是什么？",
+      "answer": "可能有限；消融显示移除序列分解后MSE恶化至0.348，而稀疏度从32降到8仅使MSE上升0.021，说明序列分解对长程预测贡献更大。",
+      "relevant_titles": [
+        "SparseTS：稀疏注意力长序列时间序列预测"
+      ]
+    },
+    {
+      "id": 21,
+      "type": "事实性",
+      "question": "所提方法将特征图划分为不重叠局部窗口时，默认窗口大小M是多少？",
+      "answer": "默认M=7，即使用7×7局部窗口计算自注意力。",
+      "relevant_titles": [
+        "Swin Transformer：层次化视觉骨干网络"
+      ]
+    },
+    {
+      "id": 22,
+      "type": "事实性",
+      "question": "在ImageNet-1K分类实验中，该层次化视觉骨干网络最大模型Swin-L的Top-1准确率是多少？",
+      "answer": "Swin-L在ImageNet-1K上的Top-1准确率为87.3%。",
+      "relevant_titles": [
+        "Swin Transformer：层次化视觉骨干网络"
+      ]
+    },
+    {
+      "id": 23,
+      "type": "归纳性",
+      "question": "所提方法通过哪些核心设计将自注意力复杂度从平方级降为线性，并实现跨窗口信息交互？",
+      "answer": "该方法在M×M局部窗口内计算自注意力，使复杂度从O(n²)降为线性；相邻层之间窗口偏移M/2，从而实现跨窗口信息交互。",
+      "relevant_titles": [
+        "Swin Transformer：层次化视觉骨干网络"
+      ]
+    },
+    {
+      "id": 24,
+      "type": "推理性",
+      "question": "若移除相邻层之间的窗口偏移操作，对ImageNet-1K分类性能可能产生什么影响？",
+      "answer": "消融实验显示，去掉移位操作后ImageNet准确率下降1.1个点，说明跨窗口建模对分类性能有显著贡献。",
+      "relevant_titles": [
+        "Swin Transformer：层次化视觉骨干网络"
+      ]
+    },
+    {
+      "id": 25,
+      "type": "事实性",
+      "question": "哪种无卷积纯Transformer视频分类模型在Kinetics-400上达到78.0%的Top-1准确率，并且训练成本约为3D CNN的十分之一？",
+      "answer": "该模型在Kinetics-400上达到78.0% Top-1准确率，训练成本为0.8 GPU-天，相比I3D的8.2 GPU-天约为十分之一。",
+      "relevant_titles": [
+        "TimeSformer：时空注意力视频理解模型"
+      ]
+    },
+    {
+      "id": 26,
+      "type": "事实性",
+      "question": "该视频理解模型的输入片段包含多少帧、每帧分辨率是多少，总共形成多少个token？",
+      "answer": "输入为8帧、每帧224x224的片段，每帧切分为16x16 patch，共8x196=1568个token。",
+      "relevant_titles": [
+        "TimeSformer：时空注意力视频理解模型"
+      ]
+    },
+    {
+      "id": 27,
+      "type": "归纳性",
+      "question": "在对比的多种时空注意力方案中，哪一种能在几乎不损失精度的前提下显著降低计算复杂度？",
+      "answer": "分离时空注意力先做时间注意力再做空间注意力，复杂度降为O(n^2+t^2)，相比联合注意力精度仅损失0.4%。",
+      "relevant_titles": [
+        "TimeSformer：时空注意力视频理解模型"
+      ]
+    },
+    {
+      "id": 28,
+      "type": "推理性",
+      "question": "如果将输入帧数从8增加到96，视频分类准确率会发生什么变化，这说明了什么？",
+      "answer": "帧数从8增到96时准确率提升3.1个点，说明增加时序采样能提升模型对视频动态信息的建模能力。",
+      "relevant_titles": [
+        "TimeSformer：时空注意力视频理解模型"
+      ]
+    },
+    {
+      "id": 29,
+      "type": "事实性",
+      "question": "在Synapse多器官CT分割中，将Transformer接入U-Net瓶颈层的混合架构取得了怎样的平均Dice和HD95？",
+      "answer": "平均Dice为77.48%，平均HD95为31.69mm。",
+      "relevant_titles": [
+        "TransUNet：Transformer 与 U-Net 结合的医学图像分割"
+      ]
+    },
+    {
+      "id": 30,
+      "type": "事实性",
+      "question": "该混合架构在最低分辨率14x14处接入的Transformer编码器使用了哪些关键配置？",
+      "answer": "使用12层Transformer编码器，patch大小为1x1，隐藏维度为768，注意力头数为12。",
+      "relevant_titles": [
+        "TransUNet：Transformer 与 U-Net 结合的医学图像分割"
+      ]
+    },
+    {
+      "id": 31,
+      "type": "归纳性",
+      "question": "消融实验表明，减少Transformer层数和改变接入分辨率会如何影响分割性能？",
+      "answer": "Transformer层数从12减到6时Dice下降2.4个点；在1/4分辨率接入Transformer效果最优。",
+      "relevant_titles": [
+        "TransUNet：Transformer 与 U-Net 结合的医学图像分割"
+      ]
+    },
+    {
+      "id": 32,
+      "type": "推理性",
+      "question": "为什么在较小医学数据集上，仅用Transformer编码器可能不如将Transformer作为瓶颈层与CNN结合的架构？",
+      "answer": "纯Transformer编码器在小数据集上不如混合架构，而混合架构能同时利用CNN的局部细节和Transformer的全局上下文。",
+      "relevant_titles": [
+        "TransUNet：Transformer 与 U-Net 结合的医学图像分割"
+      ]
+    },
+    {
+      "id": 33,
+      "type": "事实性",
+      "question": "该模型在视觉侧如何表示图像？",
+      "answer": "它将图像切分为32x32 patch，经线性投影为token，不使用CNN或目标检测器，直接送入Transformer。",
+      "relevant_titles": [
+        "ViLT：极简视觉语言预训练模型"
+      ]
+    },
+    {
+      "id": 34,
+      "type": "事实性",
+      "question": "该模型预训练时使用了哪些目标和关键训练设置？",
+      "answer": "使用图文匹配ITM和以0.15概率遮盖文本token的掩码语言建模MLM，训练采用AdamW、学习率1e-4、batch size 4096、20万步。",
+      "relevant_titles": [
+        "ViLT：极简视觉语言预训练模型"
+      ]
+    },
+    {
+      "id": 35,
+      "type": "归纳性",
+      "question": "与基于区域特征的模型相比，该模型在VQAv2和推理速度上的结果说明了什么？",
+      "answer": "它在VQAv2达到71.26，高于ViLBERT的70.55和VisualBERT的70.80，且推理速度快60倍，说明去掉区域特征提取可在保持VQA性能的同时显著提速。",
+      "relevant_titles": [
+        "ViLT：极简视觉语言预训练模型"
+      ]
+    },
+    {
+      "id": 36,
+      "type": "推理性",
+      "question": "若去掉图文匹配目标导致检索R@1下降8.2，而该模型在检索任务上仍弱于区域特征方法，可以推断出什么？",
+      "answer": "可推断ITM对跨模态检索对齐至关重要，且线性patch投影难以完全替代区域特征提供的细粒度视觉信息。",
+      "relevant_titles": [
+        "ViLT：极简视觉语言预训练模型"
+      ]
+    },
+    {
+      "id": 37,
+      "type": "事实性",
+      "question": "该方法如何将输入图像转换为Transformer可处理的序列？",
+      "answer": "将224x224图像切分为16x16的patch，共196个patch，并将每个patch线性投影为768维token后加入可学习位置编码。",
+      "relevant_titles": [
+        "Vision Transformer 在图像分类中的应用"
+      ]
+    },
+    {
+      "id": 38,
+      "type": "事实性",
+      "question": "在ImageNet-1K上达到87.1% Top-1准确率的模型规模是什么，且需要何种预训练条件？",
+      "answer": "Large规模模型达到87.1% Top-1准确率，但需要先在JFT-300M大规模数据上预训练。",
+      "relevant_titles": [
+        "Vision Transformer 在图像分类中的应用"
+      ]
+    },
+    {
+      "id": 39,
+      "type": "归纳性",
+      "question": "从实验结果看，该方法的主要优势与局限分别是什么？",
+      "answer": "该方法证明纯Transformer在大数据量下可超越CNN，但主要局限是对预训练数据规模高度依赖。",
+      "relevant_titles": [
+        "Vision Transformer 在图像分类中的应用"
+      ]
+    },
+    {
+      "id": 40,
+      "type": "推理性",
+      "question": "若将可学习位置编码改为2D感知式，实验结果对模型设计有何推论？",
+      "answer": "改为2D感知式位置编码仅带来+0.1%的不明显提升，说明标准可学习位置编码已足够，2D感知式不是性能提升的关键因素。",
+      "relevant_titles": [
+        "Vision Transformer 在图像分类中的应用"
+      ]
+    },
+    {
+      "id": 41,
+      "type": "对比性",
+      "question": "将卷积模块嵌入Transformer块的语音识别编码器与去掉锚框/NMS、采用集合预测的Transformer检测器，在核心方法和数据集结果上有何差异？",
+      "answer": "前者通过深度可分离卷积补强局部建模，在LibriSpeech上把test-clean/test-other WER降至2.1%/4.3%；后者用object query和匈牙利匹配端到端输出检测集合，在COCO上达到42.0 AP但小目标AP仅20.5。",
+      "relevant_titles": [
+        "Conformer：卷积增强的语音识别 Transformer",
+        "DETR：基于 Transformer 的端到端目标检测"
+      ]
+    },
+    {
+      "id": 42,
+      "type": "对比性",
+      "question": "在将检测重构为集合预测、去掉锚框与NMS的图像Transformer模型，和通过中心性、空间与边编码适配图结构的分子性质预测Transformer模型之间，二者在核心机制和代表性结果上有何差异？",
+      "answer": "前者以匈牙利匹配做一对一集合预测，在COCO上达到42.0 AP；后者以结构编码注入拓扑与空间信息，在QM9 HOMO预测上达到0.0325 eV MAE。",
+      "relevant_titles": [
+        "DETR：基于 Transformer 的端到端目标检测",
+        "Graphormer：图 Transformer 用于分子性质预测"
+      ]
+    },
+    {
+      "id": 43,
+      "type": "对比性",
+      "question": "在将Transformer分别适配到分子图结构与三维点云时，二者注入位置/结构信息的核心机制有何不同，且在各自代表性基准上的关键结果数字分别是什么？",
+      "answer": "分子图Transformer通过最短路径距离等结构编码作为注意力偏置，在QM9的HOMO预测上MAE降至0.0325 eV；三维点云Transformer通过两点坐标差经MLP得到的向量自注意力调制局部注意力，在S3DIS Area5语义分割上mIoU达到70.4%。",
+      "relevant_titles": [
+        "Graphormer：图 Transformer 用于分子性质预测",
+        "Point Transformer：三维点云分析"
+      ]
+    },
+    {
+      "id": 44,
+      "type": "对比性",
+      "question": "在一种面向三维无序点云的向量相对位置局部注意力模型与一种面向长序列时间序列预测的Top-32稀疏注意力加序列分解模型之间，二者的方法目标和关键结果有何差异？",
+      "answer": "前者通过向量自注意力处理无序点云，在S3DIS Area5语义分割达到70.4% mIoU、ModelNet40分类达到93.7%准确率；后者通过Top-32稀疏注意力和序列分解降低长序列预测成本，在预测长度720时MSE为0.292、推理耗时0.51秒。",
+      "relevant_titles": [
+        "Point Transformer：三维点云分析",
+        "SparseTS：稀疏注意力长序列时间序列预测"
+      ]
+    },
+    {
+      "id": 45,
+      "type": "对比性",
+      "question": "两种都降低注意力平方复杂度的模型——一种面向长序列时间预测、采用Top-32稀疏注意力，另一种面向视觉任务、采用7×7移位窗口——在方法重点和关键性能结果上有何差异？",
+      "answer": "前者把每个查询只与Top-32相似键计算注意力并加入趋势/季节分解，在720步预测中MSE为0.292、推理耗时0.51秒。后者把自注意力限制在默认7×7局部窗口并通过M/2偏移实现跨窗口交互，在COCO检测中达到58.7 box AP、在ADE20K分割中达到53.5 mIoU。",
+      "relevant_titles": [
+        "SparseTS：稀疏注意力长序列时间序列预测",
+        "Swin Transformer：层次化视觉骨干网络"
+      ]
+    },
+    {
+      "id": 46,
+      "type": "对比性",
+      "question": "采用移位窗口注意力构建层次化视觉骨干的模型，与采用时空注意力进行视频分类的模型，在注意力机制和代表性结果上有何差异？",
+      "answer": "前者在7×7局部窗口内计算注意力并通过相邻层半窗口偏移实现跨窗口交互，在COCO检测达到58.7 box AP、ADE20K分割达到53.5 mIoU；后者对8帧1568个token做时空注意力，联合注意力在Kinetics-400达到78.0% Top-1，分离时空注意力以77.6% Top-1将训练成本降至0.8 GPU-天。",
+      "relevant_titles": [
+        "Swin Transformer：层次化视觉骨干网络",
+        "TimeSformer：时空注意力视频理解模型"
+      ]
+    },
+    {
+      "id": 47,
+      "type": "对比性",
+      "question": "两种基于Transformer的视觉模型在任务目标、架构设计和关键性能结果上有何差异？",
+      "answer": "纯Transformer视频分类模型采用分离时空注意力，在Kinetics-400上达到77.6% Top-1准确率，训练成本仅0.8 GPU天。Transformer与U-Net混合医学分割模型在Synapse多器官CT上达到77.48%平均Dice，相比U-Net提升3.9个百分点。",
+      "relevant_titles": [
+        "TimeSformer：时空注意力视频理解模型",
+        "TransUNet：Transformer 与 U-Net 结合的医学图像分割"
+      ]
+    },
+    {
+      "id": 48,
+      "type": "对比性",
+      "question": "比较一种在最低分辨率接入12层Transformer以增强U-Net的医学图像分割方法，与一种用32x32 patch线性投影替代目标检测器的视觉语言预训练方法，在方法重点和关键结果上有何差异？",
+      "answer": "前者强调CNN局部细节与Transformer全局上下文融合，在Synapse CT上平均Dice达到77.48%。后者强调极简视觉token建模，在VQAv2上达到71.26分且推理速度比区域特征方法快60倍。",
+      "relevant_titles": [
+        "TransUNet：Transformer 与 U-Net 结合的医学图像分割",
+        "ViLT：极简视觉语言预训练模型"
+      ]
+    },
+    {
+      "id": 49,
+      "type": "对比性",
+      "question": "这两种都采用图像patch线性投影与Transformer编码的模型，在任务设定、预训练数据依赖和主要结果指标上有何差异？",
+      "answer": "前者面向视觉语言任务，用32×32 patch替代区域特征提取，在VQAv2达到71.26分且推理速度比区域特征方法快60倍。后者面向图像分类，用16×16 patch送入标准Transformer，但依赖JFT-300M大规模预训练，在ImageNet-1K达到87.1% Top-1准确率。",
+      "relevant_titles": [
+        "ViLT：极简视觉语言预训练模型",
+        "Vision Transformer 在图像分类中的应用"
+      ]
+    },
+    {
+      "id": 50,
+      "type": "对比性",
+      "question": "将图像切分为196个patch并依赖大规模预训练的纯Transformer分类模型，与将深度可分离卷积模块嵌入Transformer块的语音识别模型，在方法设计和主要结果上有何差异？",
+      "answer": "图像分类模型把224×224图像切成196个patch，ViT-Large在ImageNet-1K达到87.1% Top-1。语音识别模型在17层Transformer块中嵌入核大小31的深度可分离卷积，LibriSpeech WER降至2.1%/4.3%。",
+      "relevant_titles": [
+        "Vision Transformer 在图像分类中的应用",
+        "Conformer：卷积增强的语音识别 Transformer"
+      ]
+    }
+  ]
+}

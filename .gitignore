@@ -1,0 +1,29 @@
+# 环境变量（含 API Key，绝对不要提交）
+.env
+config.local.yaml
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# 数据与日志
+data/uploads/*
+data/index/*
+data/*.db
+data/*.db-wal
+data/*.db-shm
+logs/*
+!data/uploads/.gitkeep
+!data/index/.gitkeep
+
+# 测试与覆盖率
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDE
+.idea/
+.vscode/

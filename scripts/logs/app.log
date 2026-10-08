@@ -1,0 +1,25 @@
+2026-09-29 15:33:00 | INFO    | research_assistant.db    | SQLite 已连接: C:\Users\34288\Desktop\生产实习\ResearchAssistant\scripts\data\assistant.db
+2026-09-29 15:46:56 | INFO    | research_assistant.db    | SQLite 已连接: C:\Users\34288\Desktop\生产实习\ResearchAssistant\scripts\data\assistant.db
+2026-09-29 15:46:56 | INFO    | research_assistant.llm   | 初始化 LLM: DashScope / model=qwen-plus
+2026-09-29 15:46:56 | INFO    | research_assistant.embedding | 初始化 Embedding: DashScope / model=text-embedding-v3
+2026-09-29 15:46:56 | INFO    | research_assistant.chunking | 初始化分块器: recursive(size=512, overlap=64)
+2026-09-29 15:46:56 | INFO    | research_assistant.rag   | RAGPipeline 初始化完成 (llm=DashScopeLLM(qwen-plus), rerank=dashscope, cache=True)
+2026-09-29 15:46:56 | INFO    | research_assistant.tools | 工具集构建完成，共 9 个工具: knowledge_search, paper_metadata, paper_compare, keyword_extract, summarize_paper, get_current_time, calculator, web_search, library_stats
+2026-09-29 15:46:56 | INFO    | research_assistant.system | 系统初始化完成 | LLM=DashScopeLLM(qwen-plus) | Embedding=text-embedding-v3 | 分块=recursive
+2026-09-29 15:46:56 | INFO    | research_assistant.loader | 导入成功 Diffusion_Model_Segmentation.md (0.00s, 1 页)
+2026-09-29 15:46:56 | INFO    | research_assistant.loader | 导入成功 RAG_for_Scientific_QA.md (0.00s, 1 页)
+2026-09-29 15:46:56 | INFO    | research_assistant.loader | 导入成功 Vision_Transformer_Survey.md (0.00s, 1 页)
+2026-09-29 15:46:56 | INFO    | research_assistant.vector_store | 向量库新增 6 条（总 6 条）
+2026-09-29 15:46:56 | DEBUG   | jieba                    | Building prefix dict from D:\Anaconda\envs\torchev\lib\site-packages\jieba\dict.txt ...
+2026-09-29 15:46:56 | DEBUG   | jieba                    | Loading model from cache C:\Users\34288\AppData\Local\Temp\jieba.cache
+2026-09-29 15:46:57 | DEBUG   | jieba                    | Dumping model to file cache C:\Users\34288\AppData\Local\Temp\jieba.cache
+2026-09-29 15:46:57 | DEBUG   | jieba                    | Loading model cost 1.0701260566711426 seconds.
+2026-09-29 15:46:57 | DEBUG   | jieba                    | Prefix dict has been built succesfully.
+2026-09-29 15:46:57 | INFO    | research_assistant.hybrid | 增量入库 6 块
+2026-09-29 15:46:57 | INFO    | research_assistant.system | 新增 3 篇文档，6 个文本块，知识库现有 6 块
+2026-09-29 15:46:59 | INFO    | research_assistant.agent | 路由决策: Vision Transformer 在 ImageNet  -> agent (需要检索知识库，交由 Agent 决策)
+2026-09-29 15:47:06 | INFO    | research_assistant.memory | 创建会话 cli
+2026-09-29 15:47:06 | INFO    | research_assistant.agent | 路由决策: DiffSeg 方法在 BraTS2021 数据集上的 Di -> agent (需要检索知识库，交由 Agent 决策)
+2026-09-29 15:47:11 | INFO    | research_assistant.agent | 路由决策: 混合检索相比朴素 RAG 的 Hit@5 提升了多少个百分点 -> agent (对比类问题，需 Agent 规划（可能需多次检索）)
+2026-09-29 15:47:18 | INFO    | research_assistant.agent | 路由决策: 知识库里一共有几篇论文？ -> tool (识别为知识库元查询)
+2026-09-29 15:47:18 | INFO    | research_assistant.agent | 路由决策: (88.3-85.1)/85.1*100 等于多少？ -> tool (识别为数值计算问题，无需检索知识库)

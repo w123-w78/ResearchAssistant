@@ -1,0 +1,19 @@
+2026-09-29 15:31:57 | INFO    | research_assistant.db    | SQLite 已连接: C:\Users\34288\Desktop\生产实习\ResearchAssistant\src\frontend\data\assistant.db
+2026-09-29 15:32:36 | INFO    | research_assistant.db    | SQLite 已连接: C:\Users\34288\Desktop\生产实习\ResearchAssistant\src\frontend\data\assistant.db
+2026-09-29 15:49:02 | INFO    | research_assistant.db    | SQLite 已连接: C:\Users\34288\Desktop\生产实习\ResearchAssistant\src\frontend\data\assistant.db
+2026-09-29 15:49:02 | INFO    | research_assistant.llm   | 初始化 LLM: DashScope / model=qwen-plus
+2026-09-29 15:49:02 | INFO    | research_assistant.embedding | 初始化 Embedding: DashScope / model=text-embedding-v3
+2026-09-29 15:49:02 | INFO    | research_assistant.chunking | 初始化分块器: recursive(size=512, overlap=64)
+2026-09-29 15:49:02 | INFO    | research_assistant.rag   | RAGPipeline 初始化完成 (llm=DashScopeLLM(qwen-plus), rerank=dashscope, cache=True)
+2026-09-29 15:49:02 | INFO    | research_assistant.tools | 工具集构建完成，共 9 个工具: knowledge_search, paper_metadata, paper_compare, keyword_extract, summarize_paper, get_current_time, calculator, web_search, library_stats
+2026-09-29 15:49:02 | INFO    | research_assistant.system | 系统初始化完成 | LLM=DashScopeLLM(qwen-plus) | Embedding=text-embedding-v3 | 分块=recursive
+2026-09-29 15:49:02 | INFO    | research_assistant.system | 未发现已有索引，将从空库启动
+2026-09-29 15:49:02 | INFO    | research_assistant.memory | 创建会话 511f2991
+2026-09-29 17:26:17 | INFO    | research_assistant.db    | SQLite 已连接: C:\Users\34288\Desktop\生产实习\ResearchAssistant\src\frontend\data\assistant.db
+2026-09-29 17:26:17 | INFO    | research_assistant.llm   | 初始化 LLM: DashScope / model=qwen-plus
+2026-09-29 17:26:17 | INFO    | research_assistant.embedding | 初始化 Embedding: DashScope / model=text-embedding-v3
+2026-09-29 17:26:17 | INFO    | research_assistant.chunking | 初始化分块器: recursive(size=512, overlap=64)
+2026-09-29 17:26:17 | INFO    | research_assistant.rag   | RAGPipeline 初始化完成 (llm=DashScopeLLM(qwen-plus), rerank=dashscope, cache=True)
+2026-09-29 17:26:17 | INFO    | research_assistant.memory | 已从 SQLite 恢复 1 个会话
+2026-09-29 17:26:17 | INFO    | research_assistant.tools | 工具集构建完成，共 9 个工具: knowledge_search, paper_metadata, paper_compare, keyword_extract, summarize_paper, get_current_time, calculator, web_search, library_stats
+2026-09-29 17:26:17 | INFO    | research_assistant.system | 系统初始化完成 | LLM=DashScopeLLM(qwen-plus) | Embedding=text-embedding-v3 | 分块=recursive

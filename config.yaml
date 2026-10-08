@@ -1,0 +1,143 @@
+# ============================================================
+# 智能科研助理 —— 基于 RAG + Agent 的论文知识库问答系统
+# 全局配置文件（所有模块参数集中管理，便于实验对比）
+#
+# 技术栈：DashScope(通义千问) + SQLite + 混合检索 + ReAct Agent
+# ============================================================
+
+app:
+  name: "智能科研助理"
+  version: "1.0.0"
+  data_dir: "./data"
+  upload_dir: "./data/uploads"
+  index_dir: "./data/index"
+  log_dir: "./logs"
+  language: "zh"
+
+# ---------------- 模型服务（阿里云 DashScope，唯一接入方式） ----------------
+# API Key 建议通过环境变量注入：set DASHSCOPE_API_KEY=sk-xxxxxx
+# 也可直接填在下面（注意：不要把真实 Key 提交到 Git 仓库）
+llm:
+  api_key: ""                 # 留空则自动读取环境变量 DASHSCOPE_API_KEY
+  base_url: "https://llm-9a6n4wsjzbiqm6yo.cn-beijing.maas.aliyuncs.com/compatible-mode/v1"
+  model: "qwen3.8-flash"          # qwen-plus(均衡) / qwen-turbo(快) / qwen-max(强)
+  temperature: 0.2
+  top_p: 0.85
+  max_tokens: 2048
+  timeout: 120
+  max_retries: 2
+
+# Embedding（与 LLM 共用同一个 DashScope Key）
+embedding:
+  model: "qwen3.7-text-embedding"  # 维度可选 1024 / 768 / 512
+  base_url: "https://llm-9a6n4wsjzbiqm6yo.cn-beijing.maas.aliyuncs.com/compatible-mode/v1"
+  api_key: ""                 # 留空则复用 llm.api_key / 环境变量
+  dim: 1024
+  batch_size: 10              # text-embedding-v3 单次请求最多 10 条
+  normalize: true
+  timeout: 60
+  max_retries: 2
+
+# ---------------- 存储层（SQLite） ----------------
+storage:
+  db_path: "./data/assistant.db"   # 文档元数据 / 对话记忆 / 语义缓存 / 请求日志
+  enable_request_log: true
+  enable_cache: true
+
+# ---------------- 模块一：文档处理与检索层 ----------------
+chunking:
+  strategy: "recursive"      # fixed | recursive | semantic | academic
+  chunk_size: 512
+  chunk_overlap: 64
+  min_chunk_size: 80
+  academic:
+    keep_formula: true       # 保留 LaTeX 公式完整块，不在公式中间切断
+    section_keywords: ["abstract", "introduction", "method", "experiment", "conclusion", "related work"]
+
+retrieval:
+  top_k: 20                  # 混合检索召回候选数（送入 Rerank）
+  final_top_k: 5             # 最终进入 Prompt 的片段数
+  rrf_k: 60                  # RRF 融合平滑系数
+  vector_weight: 0.5         # 加权融合时向量检索权重
+  bm25_weight: 0.5           # 加权融合时 BM25 权重
+  fusion_mode: "rrf"         # rrf | weighted
+  score_threshold: 0.15      # 低于该分数视为低相关性，触发降级
+  enable_rerank: true
+  reranker:
+    # dashscope: 调用通义千问 qwen3.7-text-rerank 在线精排（推荐，真实交叉编码）
+    # heuristic: 纯本地启发式精排（零网络开销，离线可用）
+    # none:      不做重排（对照组实验）
+    # 注：gte-rerank 系列官方已下线，请勿使用 gte-rerank-v2 以外的旧名
+    provider: "dashscope"
+    model: "qwen3.7-text-rerank"   # 可选 gte-rerank-v2
+    top_n: 5
+    timeout: 30
+
+vector_store:
+  backend: "numpy"           # numpy | faiss
+  index_path: "./data/index/vector_store"
+  metric: "cosine"
+
+bm25:
+  k1: 1.5
+  b: 0.75
+  use_jieba: true            # 未安装 jieba 时自动降级为 2-gram 切分
+
+# ---------------- 模块二：RAG 生成层 ----------------
+generation:
+  stream: true
+  max_context_chars: 6000    # 上下文智能截断阈值
+  temperature: 0.2
+  citation_style: "inline"   # 答案中标注 [1]，文末列出来源
+  enable_citation: true
+  fallback:
+    no_result_to_llm: true   # 检索无结果时回退纯模型生成（附明确提示）
+    low_score_hint: true     # 低相关性时提示用户并展示检索到的内容
+
+cache:
+  enabled: true
+  similarity_threshold: 0.93 # 语义缓存命中阈值
+  max_size: 500
+  ttl_seconds: 86400
+  # 缓存存于 SQLite 的 cache 表，无需额外文件路径
+
+# ---------------- 模块三：Agent 决策层 ----------------
+agent:
+  max_iterations: 6          # ReAct 最大迭代轮次（防死循环）
+  max_tool_workers: 4        # 并行工具调用线程数
+  tool_timeout: 30           # 单工具超时（秒）
+  max_tool_retries: 2        # 工具失败重试次数
+  loop_detect_window: 3      # 重复动作检测窗口
+  enable_router: true        # 快速路由（省 Token）
+  enable_parallel: true      # 并行工具调用
+
+memory:
+  max_turns: 20              # 保留的最大对话轮次
+  max_tokens: 3000           # 滑动窗口 Token 上限
+  summarize_threshold: 8     # 超过该轮次触发摘要压缩
+
+tools:
+  web_search:
+    enabled: false           # 联网搜索默认关闭
+    engine: "duckduckgo"
+    max_results: 3
+  calculator:
+    enabled: true
+
+# ---------------- 模块四：前端与可观测性 ----------------
+observability:
+  enabled: true
+  log_requests: true         # 请求日志写入 SQLite request_logs 表
+
+frontend:
+  title: "智能科研助理 · 论文知识库问答"
+  page_icon: "🔬"
+  layout: "wide"
+  typing_speed: 0.01
+
+logging:
+  level: "INFO"
+  console: true
+  file: "./logs/app.log"
+  max_bytes: 10485760
+  backup_count: 5

@@ -1,0 +1,147 @@
+<!DOCTYPE html><html lang="zh-CN" data-page-node-id="AQdv5yYRQsrQefRTdljBhS"><head data-page-node-id="tgGDUmXvKyAi2ed1Dnq2RO"><meta charset="utf-8" data-page-node-id="SBKTn6aswO7hDMcXm0wGY4">
+<title>智能科研助理 · 检索性能评测报告</title><style>
+body{font-family:-apple-system,'Segoe UI',Roboto,'Microsoft YaHei',sans-serif;
+     max-width:860px;margin:32px auto;padding:0 20px;color:#2C2C2A;line-height:1.7;}
+h1{font-size:22px;font-weight:500;border-bottom:2px solid #378ADD;padding-bottom:10px;}
+h2{font-size:17px;font-weight:500;margin-top:32px;color:#185FA5;}
+h3{font-size:14px;font-weight:500;margin-top:20px;color:#0F6E56;}
+table{border-collapse:collapse;width:100%;margin:12px 0;font-size:13px;}
+th,td{border:1px solid #D3D1C7;padding:7px 10px;text-align:left;}
+th{background:#F1EFE8;font-weight:500;}
+tr:nth-child(even) td{background:#FAFAF8;}
+.card{border:1px solid #E5E3DC;border-radius:10px;padding:18px;margin:16px 0;background:#fff;}
+.note{background:#FAEEDA;border-left:3px solid #EF9F27;padding:10px 14px;
+      font-size:13px;margin:12px 0;border-radius:0 6px 6px 0;}
+.bad{background:#FCEBEB;border-left:3px solid #E24B4A;padding:10px 14px;
+     font-size:13px;margin:8px 0;border-radius:0 6px 6px 0;}
+code{background:#F1EFE8;padding:1px 5px;border-radius:3px;font-size:12px;}
+</style></head><body data-page-node-id="kLPouyUOPypxnpqvU68RGJ">
+<h1 data-page-node-id="kezcIobaV6FWIS6IKKV387">智能科研助理 · 检索性能评测报告</h1>
+<p style="color:#5F5E5A;font-size:13px" data-page-node-id="aSSjqHx4G62OJmlPFgo80H">
+语料：./data/papers_transformer（10 篇）｜ 评测集：50 题 ｜
+评测分块大小：256</p>
+
+<h2 data-page-node-id="PG6bFUYlyN7FhBpifaoqVk">一、检索策略三档对比</h2>
+<div class="card" data-page-node-id="17xgudLK7hoD8mDP8DwSg8"><svg viewBox="0 0 660 280" width="100%" xmlns="http://www.w3.org/2000/svg" data-page-node-id="fNQMxxlrfgY4vH61sSqLHC">
+<line x1="52" y1="226.0" x2="652" y2="226.0" stroke="#E5E3DC" stroke-width="1" data-page-node-id="ppvLLOUk9H3UarptGYFXaS"/>
+<text x="44" y="230.0" font-size="11" fill="#888780" text-anchor="end" data-page-node-id="86oG9LFboNI8qCnHbAhD8N">0.00</text>
+<line x1="52" y1="176.0" x2="652" y2="176.0" stroke="#E5E3DC" stroke-width="1" data-page-node-id="8CVUhWHHbAB9T4rZr6CsRC"/>
+<text x="44" y="180.0" font-size="11" fill="#888780" text-anchor="end" data-page-node-id="nVovlAmOfEFkTcVsEwH8y1">0.25</text>
+<line x1="52" y1="126.0" x2="652" y2="126.0" stroke="#E5E3DC" stroke-width="1" data-page-node-id="dpTkoYEHO6DhrWYzWkA6tt"/>
+<text x="44" y="130.0" font-size="11" fill="#888780" text-anchor="end" data-page-node-id="iB3qNv5FsLHfBI2Jr3hGHJ">0.50</text>
+<line x1="52" y1="76.0" x2="652" y2="76.0" stroke="#E5E3DC" stroke-width="1" data-page-node-id="mSiBT7PcmaooRNtaPbEBDA"/>
+<text x="44" y="80.0" font-size="11" fill="#888780" text-anchor="end" data-page-node-id="tVKEOALbaU4RWdXbr984f7">0.75</text>
+<line x1="52" y1="26.0" x2="652" y2="26.0" stroke="#E5E3DC" stroke-width="1" data-page-node-id="3HZt1IOhayM2jwblxfGZjn"/>
+<text x="44" y="30.0" font-size="11" fill="#888780" text-anchor="end" data-page-node-id="oC0FzVE90Wr5ldXgM1svAu">1.00</text>
+<rect x="60.0" y="42.0" width="22.0" height="184.0" rx="3" fill="#378ADD" data-page-node-id="r0yguYM8xaST1YTDyCgwah"/>
+<text x="71.0" y="37.0" font-size="10" fill="#5F5E5A" text-anchor="middle" data-page-node-id="H380rTUNEUVvxJeRjF7sju">0.920</text>
+<rect x="86.0" y="30.0" width="22.0" height="196.0" rx="3" fill="#1D9E75" data-page-node-id="QhL8KKRL7IA5CSGi9bDFzs"/>
+<text x="97.0" y="25.0" font-size="10" fill="#5F5E5A" text-anchor="middle" data-page-node-id="QHWSrP7ysa0PDEhBh3g7In">0.980</text>
+<rect x="112.0" y="30.0" width="22.0" height="196.0" rx="3" fill="#EF9F27" data-page-node-id="46M0PFMaVv0xrglaKv3vio"/>
+<text x="123.0" y="25.0" font-size="10" fill="#5F5E5A" text-anchor="middle" data-page-node-id="iEfsmgeXpFlLHGw2P2AciQ">0.980</text>
+<rect x="138.0" y="36.7" width="22.0" height="189.3" rx="3" fill="#D85A30" data-page-node-id="KHxcfiJvAZZYMVsNz0vf9E"/>
+<text x="149.0" y="31.7" font-size="10" fill="#5F5E5A" text-anchor="middle" data-page-node-id="SLGqttOSMTJFIAEDDhZaRD">0.947</text>
+<text x="150.7" y="246" font-size="12" fill="#2C2C2A" text-anchor="middle" data-page-node-id="n3QguPoo6FMC2fAd8saris">纯向量</text>
+<rect x="257.3" y="38.0" width="22.0" height="188.0" rx="3" fill="#378ADD" data-page-node-id="v3iXUAiQjGz8dihlAt2UuN"/>
+<text x="268.3" y="33.0" font-size="10" fill="#5F5E5A" text-anchor="middle" data-page-node-id="adAUTsEjgULv6ChJ2IRoqt">0.940</text>
+<rect x="283.3" y="30.0" width="22.0" height="196.0" rx="3" fill="#1D9E75" data-page-node-id="PeuzbNtvgGCUETas3zWQVq"/>
+<text x="294.3" y="25.0" font-size="10" fill="#5F5E5A" text-anchor="middle" data-page-node-id="YcvG0LXVXo1RbdfnbPmozP">0.980</text>
+<rect x="309.3" y="30.0" width="22.0" height="196.0" rx="3" fill="#EF9F27" data-page-node-id="95cGGha6OPgMwYRIXUtzuw"/>
+<text x="320.3" y="25.0" font-size="10" fill="#5F5E5A" text-anchor="middle" data-page-node-id="dBbevT2Plieum39lDVImCc">0.980</text>
+<rect x="335.3" y="34.0" width="22.0" height="192.0" rx="3" fill="#D85A30" data-page-node-id="mAkRFwrIkRd6gw87kHY0Gj"/>
+<text x="346.3" y="29.0" font-size="10" fill="#5F5E5A" text-anchor="middle" data-page-node-id="9gjQEbJW8UcDGmyHS2rcAt">0.960</text>
+<text x="348.0" y="246" font-size="12" fill="#2C2C2A" text-anchor="middle" data-page-node-id="yiviyguWn0Og2c69f0pXj6">混合检索(RRF)</text>
+<rect x="454.7" y="34.0" width="22.0" height="192.0" rx="3" fill="#378ADD" data-page-node-id="tQKDacmD1KxEypQYNFqnVF"/>
+<text x="465.7" y="29.0" font-size="10" fill="#5F5E5A" text-anchor="middle" data-page-node-id="7YdtSR4JeeRHzyaUIA2FsE">0.960</text>
+<rect x="480.7" y="30.0" width="22.0" height="196.0" rx="3" fill="#1D9E75" data-page-node-id="ZHpGIwZEGzgr2rVU0kbp4G"/>
+<text x="491.7" y="25.0" font-size="10" fill="#5F5E5A" text-anchor="middle" data-page-node-id="EtICVWxEVMedM9VtS9RYH8">0.980</text>
+<rect x="506.7" y="30.0" width="22.0" height="196.0" rx="3" fill="#EF9F27" data-page-node-id="kybV70CAJiD4TZaOEmIWvT"/>
+<text x="517.7" y="25.0" font-size="10" fill="#5F5E5A" text-anchor="middle" data-page-node-id="QQbbBvxxgEGUnwb104r0rA">0.980</text>
+<rect x="532.7" y="32.0" width="22.0" height="194.0" rx="3" fill="#D85A30" data-page-node-id="3ELtMgNjBSBuvdM1XxJJ0G"/>
+<text x="543.7" y="27.0" font-size="10" fill="#5F5E5A" text-anchor="middle" data-page-node-id="BX7pvIG6TMD22GzNDutUwX">0.970</text>
+<text x="545.3" y="246" font-size="12" fill="#2C2C2A" text-anchor="middle" data-page-node-id="ZpMZi0TWRFVcLYQsNZ7Bg7">混合+重排序</text>
+<rect x="52" y="262" width="12" height="12" rx="2" fill="#378ADD" data-page-node-id="2bRMvPa5FY88prX3sfNPHX"/>
+<text x="69" y="272" font-size="11" fill="#5F5E5A" data-page-node-id="po3Zpx7iyHWFiYNG240Fu0">Hit@1</text>
+<rect x="133" y="262" width="12" height="12" rx="2" fill="#1D9E75" data-page-node-id="EeNujEwvVUCIhYdRhJYzgQ"/>
+<text x="150" y="272" font-size="11" fill="#5F5E5A" data-page-node-id="p88OMjGoCO0PTVg63BFl5A">Hit@3</text>
+<rect x="214" y="262" width="12" height="12" rx="2" fill="#EF9F27" data-page-node-id="3BKeCesGZFHo1LQ0ltMJ8g"/>
+<text x="231" y="272" font-size="11" fill="#5F5E5A" data-page-node-id="iDDEoYW4w1tquP4jzeOG0E">Hit@5</text>
+<rect x="295" y="262" width="12" height="12" rx="2" fill="#D85A30" data-page-node-id="KkBMUdrpPDbSTUjfcNGYb1"/>
+<text x="312" y="272" font-size="11" fill="#5F5E5A" data-page-node-id="rgvqwNbbXdrYkKUbiOlBqX">MRR</text>
+</svg></div>
+<table data-page-node-id="8kwklFwbzJX48n7vQakGAJ"><thead data-page-node-id="MEkRrA0yKqyzyNSCsPw2z6"><tr data-page-node-id="hbMlQ8C8vzPMwH6HMTewxX"><th data-page-node-id="wxz8OP7RZT7lcSaQ2Atarg">档位</th><th data-page-node-id="VAHXQCmNJzAEAm0tTRd3sT">Hit@1</th><th data-page-node-id="uFFtup6QE0kVXmhYjXRlnL">Hit@3</th><th data-page-node-id="sPrLXM0tYIuc2f8t3v02tE">Hit@5</th><th data-page-node-id="FBfpw1BnOUrlcbxiC9xUAS">MRR</th><th data-page-node-id="BSvYQOmVCAfSKWAyEvaddG">块数</th></tr></thead><tbody data-page-node-id="ilqtYgqV6odUnvuPWU7QTJ"><tr data-page-node-id="lGSSoffxTkei01JsDpW7Ea"><td data-page-node-id="h8wbsOZUFiZs9IKNIPEHcW">纯向量</td><td data-page-node-id="IiapB31XglYs9bqQZiMexv">0.92</td><td data-page-node-id="0gUroWw5krfdGlEXTi8wdT">0.98</td><td data-page-node-id="5q6UkeuwNMOOMBlw4dE9gz">0.98</td><td data-page-node-id="wC3JEaqB7D5TgqRyXqjxSR">0.9467</td><td data-page-node-id="kXOPmYxuBQoFOpKTUcNe7r">47</td></tr><tr data-page-node-id="D0Jmv8Kzy4jmzM2gpeuXjB"><td data-page-node-id="5TOD9dig1HDNwgR694DhN8">混合检索(RRF)</td><td data-page-node-id="ghsPFFqrXwuMb9hp6F9CcO">0.94</td><td data-page-node-id="9tQJ5b4mpodtLQKcsGLvCI">0.98</td><td data-page-node-id="45CT1TXWwyI5HcXrEffrXz">0.98</td><td data-page-node-id="3MGNZGD60y8cCbbZx8Y9UB">0.96</td><td data-page-node-id="e5dxu4bH4oKSGVgiD8MCAA">47</td></tr><tr data-page-node-id="oGZItSOroz4rv0oZgKkXxI"><td data-page-node-id="b6xaTmOjN92BKXN3tBhxfT">混合+重排序</td><td data-page-node-id="bAgR0KwAAuMnuHY1fPSy3L">0.96</td><td data-page-node-id="ywc6kLGqAYdY1uhUBo2y8Z">0.98</td><td data-page-node-id="1VK03r1H4a5Au8Kz6k07dz">0.98</td><td data-page-node-id="CHL8tj8fpzDFAwRJN1l6jS">0.97</td><td data-page-node-id="tvf325fxQot1zZHmmnFNj1">47</td></tr></tbody></table>
+<div class="note" data-page-node-id="AggkDYzteNGC3uyGxAEZt0">
+<b data-page-node-id="ii78qH1l691D0MAAUa98xm">结论</b>：混合检索（BM25 + 向量 + RRF）相比纯向量检索，Hit@1 提升
+2.0 个百分点；
+再叠加在线重排序后，Hit@1 达 0.96、MRR 达 0.97。
+Hit@5 已接近饱和（0.98），说明本系统使用的
+qwen3.7-text-embedding 语义表征能力较强，Top-5 宽松召回几乎必然命中，
+因此<b data-page-node-id="J701mZvwUXr0TO5lDnfoM4">以 Hit@1 与 MRR 作为主要区分指标</b>。
+</div>
+
+<h2 data-page-node-id="JpHONDK9HIApPH2hdxSW3H">二、分块策略对比实验</h2>
+<div class="card" data-page-node-id="AT0rzmQLP61qMPaWklcAje"><svg viewBox="0 0 660 260" width="100%" xmlns="http://www.w3.org/2000/svg" data-page-node-id="Vom4AQLv0ERdpqP03ytiuD">
+<line x1="52" y1="206.0" x2="652" y2="206.0" stroke="#E5E3DC" stroke-width="1" data-page-node-id="8fZHxpRQjhRqq5HTTpWUUI"/>
+<text x="44" y="210.0" font-size="11" fill="#888780" text-anchor="end" data-page-node-id="XaIh3mVlkD5gReQGtYYx6u">0.00</text>
+<line x1="52" y1="161.0" x2="652" y2="161.0" stroke="#E5E3DC" stroke-width="1" data-page-node-id="FYg7S0TWIPSpMUmChgiTL9"/>
+<text x="44" y="165.0" font-size="11" fill="#888780" text-anchor="end" data-page-node-id="gmPo4jxWiBnCxUBmbb7K4g">32.49</text>
+<line x1="52" y1="116.0" x2="652" y2="116.0" stroke="#E5E3DC" stroke-width="1" data-page-node-id="rddVweUDJaB4DtKBfQ9JwC"/>
+<text x="44" y="120.0" font-size="11" fill="#888780" text-anchor="end" data-page-node-id="23Bey5dOauKZKtQDMpVn6D">64.97</text>
+<line x1="52" y1="71.0" x2="652" y2="71.0" stroke="#E5E3DC" stroke-width="1" data-page-node-id="sPR9Vx9XPS9h7HEZkmo9Y2"/>
+<text x="44" y="75.0" font-size="11" fill="#888780" text-anchor="end" data-page-node-id="gQkEZJSb3WOwaXEbm0Ubij">97.46</text>
+<line x1="52" y1="26.0" x2="652" y2="26.0" stroke="#E5E3DC" stroke-width="1" data-page-node-id="0WFIw4ERW1ms1qlXtxlM4a"/>
+<text x="44" y="30.0" font-size="11" fill="#888780" text-anchor="end" data-page-node-id="0Ii2B6rCdLUUH5GbwLyCgF">129.95</text>
+<rect x="60.0" y="117.4" width="22.0" height="88.6" rx="3" fill="#378ADD" data-page-node-id="U45Iv7AOOOeimfotw7cEPx"/>
+<text x="71.0" y="112.4" font-size="10" fill="#5F5E5A" text-anchor="middle" data-page-node-id="gRvpJFddDYHRTUdKMZ9zxJ">64.000</text>
+<rect x="86.0" y="164.4" width="22.0" height="41.6" rx="3" fill="#1D9E75" data-page-node-id="NGBmhMbNoLRDewPLZsygV6"/>
+<text x="97.0" y="159.4" font-size="10" fill="#5F5E5A" text-anchor="middle" data-page-node-id="1dnBwj7jrLb6qtLPCxVKd0">30.000</text>
+<rect x="112.0" y="140.9" width="22.0" height="65.1" rx="3" fill="#EF9F27" data-page-node-id="QsmsX7ZZ2KWcFJvVaNHJMB"/>
+<text x="123.0" y="135.9" font-size="10" fill="#5F5E5A" text-anchor="middle" data-page-node-id="S1dUZX70o4quowHRN60IDW">47.000</text>
+<rect x="138.0" y="49.5" width="22.0" height="156.5" rx="3" fill="#D85A30" data-page-node-id="yOVc3H8W0A0KnzCSL1BTiu"/>
+<text x="149.0" y="44.5" font-size="10" fill="#5F5E5A" text-anchor="middle" data-page-node-id="FxsaE9GkJE9eCozoZC9fYk">113.000</text>
+<text x="150.7" y="226" font-size="12" fill="#2C2C2A" text-anchor="middle" data-page-node-id="VNxl2PsJ2GDHJbBxY5fK1W">256</text>
+<rect x="257.3" y="118.7" width="22.0" height="87.3" rx="3" fill="#378ADD" data-page-node-id="1Ch76iCFFhTwSU66pXccL8"/>
+<text x="268.3" y="113.7" font-size="10" fill="#5F5E5A" text-anchor="middle" data-page-node-id="krdDdWJy7bvzdEKAGLedwM">63.000</text>
+<rect x="283.3" y="178.3" width="22.0" height="27.7" rx="3" fill="#1D9E75" data-page-node-id="Nv5bSUF7EoaHzdGkbBAimG"/>
+<text x="294.3" y="173.3" font-size="10" fill="#5F5E5A" text-anchor="middle" data-page-node-id="oDy00sGs3tMAae7LbmwVo7">20.000</text>
+<rect x="309.3" y="178.3" width="22.0" height="27.7" rx="3" fill="#EF9F27" data-page-node-id="ZCZvt3IPvkiTXXI1HcWhDI"/>
+<text x="320.3" y="173.3" font-size="10" fill="#5F5E5A" text-anchor="middle" data-page-node-id="K7NWGnCkZ0r2sVWAUMt8gK">20.000</text>
+<rect x="335.3" y="49.5" width="22.0" height="156.5" rx="3" fill="#D85A30" data-page-node-id="XFVro5GVWppvC63rHi9bMw"/>
+<text x="346.3" y="44.5" font-size="10" fill="#5F5E5A" text-anchor="middle" data-page-node-id="uEnmkVD2GtREuTgiExfydw">113.000</text>
+<text x="348.0" y="226" font-size="12" fill="#2C2C2A" text-anchor="middle" data-page-node-id="2UOXp5atHRKpwtBTHP1TkF">512</text>
+<rect x="454.7" y="118.7" width="22.0" height="87.3" rx="3" fill="#378ADD" data-page-node-id="vrSqbrZDQfzgeOG6eFB1dH"/>
+<text x="465.7" y="113.7" font-size="10" fill="#5F5E5A" text-anchor="middle" data-page-node-id="K0FzOqF6EWdYdW5WAy46B9">63.000</text>
+<rect x="480.7" y="192.1" width="22.0" height="13.9" rx="3" fill="#1D9E75" data-page-node-id="NNxObEJebTYYSvZyCCyCrs"/>
+<text x="491.7" y="187.1" font-size="10" fill="#5F5E5A" text-anchor="middle" data-page-node-id="hvCBytZ1cyzqiy1HzYKvOn">10.000</text>
+<rect x="506.7" y="192.1" width="22.0" height="13.9" rx="3" fill="#EF9F27" data-page-node-id="P5WmFEGDd9XobCGCzksuGk"/>
+<text x="517.7" y="187.1" font-size="10" fill="#5F5E5A" text-anchor="middle" data-page-node-id="k0G0mK1RFhVOI6hqBbAv4W">10.000</text>
+<rect x="532.7" y="49.5" width="22.0" height="156.5" rx="3" fill="#D85A30" data-page-node-id="kLcoP43q8Y9Oigc4v8e1H0"/>
+<text x="543.7" y="44.5" font-size="10" fill="#5F5E5A" text-anchor="middle" data-page-node-id="y0ntaqCnIAQjo85dw6m8u9">113.000</text>
+<text x="545.3" y="226" font-size="12" fill="#2C2C2A" text-anchor="middle" data-page-node-id="rQm23RTkgLJq8kX5OvKsFL">1024</text>
+<rect x="52" y="242" width="12" height="12" rx="2" fill="#378ADD" data-page-node-id="sp5eFFJEJBKBzhJ6W8UsJ0"/>
+<text x="69" y="252" font-size="11" fill="#5F5E5A" data-page-node-id="EAZVbHCCHXhpDvy1FkZ7Li">academic 块</text>
+<rect x="166" y="242" width="12" height="12" rx="2" fill="#1D9E75" data-page-node-id="xnNZvK0MeuWdxFNzPLBGnQ"/>
+<text x="183" y="252" font-size="11" fill="#5F5E5A" data-page-node-id="5xkT7CpeukHLDbaScTNjot">fixed 块</text>
+<rect x="247" y="242" width="12" height="12" rx="2" fill="#EF9F27" data-page-node-id="B119EixX5tC6WCRw8Jmvbq"/>
+<text x="264" y="252" font-size="11" fill="#5F5E5A" data-page-node-id="3ZyaRIBGDo8ouR88Pvpbv0">recursive 块</text>
+<rect x="372" y="242" width="12" height="12" rx="2" fill="#D85A30" data-page-node-id="HsRuiUNPvleQe3K224oHyW"/>
+<text x="389" y="252" font-size="11" fill="#5F5E5A" data-page-node-id="O22ecw6zI3kGVJolH97KAg">semantic 块</text>
+</svg></div>
+<table data-page-node-id="zpm9Pqj9hoWn4nDK5gRcZo"><thead data-page-node-id="NBntkhzHrQ05r7zC3Z2yed"><tr data-page-node-id="i8imfY0mNcpUJFoKvQ1pGI"><th data-page-node-id="Nw1jMeF8kIG1cvTGw4yo6V">策略</th><th data-page-node-id="OouHJxaPaX3EdoE0JZu6eU">块数</th><th data-page-node-id="v8RJEDI1Z2eh6erFAHvS8L">平均块长</th><th data-page-node-id="i81QrNJYgREeKKNZ1VfYvP">最大块长</th><th data-page-node-id="LiW5aDLEZv9HGva6WUBiZz">最短块长</th><th data-page-node-id="115oNbfTcUKwz8yPQVvd63">标准差</th><th data-page-node-id="pK6cAwKHHh2MB7IclGLQd1">过短块占比</th></tr></thead><tbody data-page-node-id="XF1ZDePQnS768uAyfVKDcE"><tr data-page-node-id="6PABxJVgiQnFwnLt5MalwR"><td data-page-node-id="VhAYaiVCkD1VkagioJP5mx">fixed</td><td data-page-node-id="jLp3oRtUPD2djDsRLSmycu">30</td><td data-page-node-id="8V6WOegCkW6FJRowC3kRs2">258.1</td><td data-page-node-id="J2hbB1DcM1m574qnyKt8B9">318</td><td data-page-node-id="EMdIT5Cz6Qyel95n1zHr5j">228</td><td data-page-node-id="gJV78BsCItDloUqqi7jH3c">25.1</td><td data-page-node-id="CiroCoQ1XlWJ1naTvfhUnn">0.0%</td></tr><tr data-page-node-id="RN2MufkKHwsHAtHLFSpP2b"><td data-page-node-id="4uBxucjb5CrVJ7SHrqyH5i">recursive</td><td data-page-node-id="0CUimzw1MjsTdtFXXIftrS">47</td><td data-page-node-id="CPNpf9BsJdXBfFzGM8mxav">175.4</td><td data-page-node-id="tusSYP4M4wAHfZ88TvJrNv">280</td><td data-page-node-id="a6tGWQ6iedLZUgeQRXZwld">94</td><td data-page-node-id="yMd97pZObrHrA3Dsu2yA3o">56.4</td><td data-page-node-id="kB86QQXCG4ktZOCISnfn7v">0.0%</td></tr><tr data-page-node-id="CicBDHrcdnqsgFUb0NxmcH"><td data-page-node-id="bBKZKXom5OfDA8wSbwPkGp">semantic</td><td data-page-node-id="s60uG7rzvpxpAUqXxWAFkh">113</td><td data-page-node-id="tAPA9drW6v69Rq5R378qqn">61.9</td><td data-page-node-id="pi8kW0hZHRIsCXeBL03gd6">184</td><td data-page-node-id="7fgkrFGwSfa8K6m6Wi5z6L">18</td><td data-page-node-id="f7r35dgwj42CRhE8ViziI6">33.0</td><td data-page-node-id="kSkuiaeREQ8VpZOUvKV6cn">78.8%</td></tr><tr data-page-node-id="SrpwstB6YEyccjvuMlgwNn"><td data-page-node-id="6TmMolgg04ZT1TCeio3t2c">academic</td><td data-page-node-id="kJkrF43kUnGVYYFeofxzNd">64</td><td data-page-node-id="yYztmyWepsW6kvwJBBKH8I">110.4</td><td data-page-node-id="uFl4Od6GMDuhOPYTHJlCIy">248</td><td data-page-node-id="yld1wWvGAF97SixugWqlIB">18</td><td data-page-node-id="eYWC3jH8arHfUBm2TrrwqD">62.7</td><td data-page-node-id="sZlizXC6p5AZl2DtPDfa0P">39.1%</td></tr></tbody></table>
+<div class="note" data-page-node-id="jrl1yyhBpGDuqOX0EG7U1s">
+递归切分（recursive）在相同 chunk_size 下产生的块长最均匀、标准差最小，
+且能保留段落与句子边界；固定切分（fixed）速度快但会在句中切断；
+语义切分（semantic）块内连贯性最好但耗时更高；
+学术切分（academic）额外保护公式与表格块。
+</div>
+
+<h2 data-page-node-id="0KXxcGk3K2ezsW8RDomvj6">三、评测集构成</h2>
+<table data-page-node-id="eDfmdOty4p8QAogLYVg7Ci"><thead data-page-node-id="EymSca5EEolrTJFZLC7oHD"><tr data-page-node-id="PrAulW7RP2UhUWUe2B3QBr"><th data-page-node-id="nkSMRsoWWbUUiVCiW9ipOm">题型</th><th data-page-node-id="ejbGgrVJDpyjyRy1rnwDuD">题数</th></tr></thead><tbody data-page-node-id="fy1ljYAh0pluwvZNLm7OuN"><tr data-page-node-id="1bxrA5WaeaQ84DKNviKBK1"><td data-page-node-id="6xi9NM6in9Whq4xpXcoWDY">事实性</td><td data-page-node-id="Hi8NjhcH1PWbZXnhwfI7ij">20</td></tr><tr data-page-node-id="ws2sEHeeCgoC1E5mQn9KA3"><td data-page-node-id="rXglp2AWAZ1QQzJEhowk5Z">归纳性</td><td data-page-node-id="Ts1xlFv1FRQAiX9occu28x">10</td></tr><tr data-page-node-id="czBQegPdMKRRVX07e1vLFO"><td data-page-node-id="uf0hqAjTaUk84SAge07zwJ">推理性</td><td data-page-node-id="jXfD2wfCdKxOWW6GQoDXnH">10</td></tr><tr data-page-node-id="V1XWj25GAbsXaukJp1WAhA"><td data-page-node-id="ZL950pksAk2ElOlcxAoGyC">对比性</td><td data-page-node-id="La2Mz68DUE2jtQ1htMITBC">10</td></tr></tbody></table>
+
+<h2 data-page-node-id="8RrqlBMFZkiTzcozHCAAEM">四、Bad Case 分析</h2>
+<p style="font-size:13px;color:#5F5E5A" data-page-node-id="bazGVTdLfEwJAV7E2pvdsD">
+未命中（Hit@5 = 0）的案例共 1 条，占评测集
+2.0%：</p>
+<div class="bad" data-page-node-id="FjHlLqHrjZJmCq9zRbXT2W"><b data-page-node-id="IQGXe0aZDn3ZFvS70DRdYS">[对比性]</b> 两种基于Transformer的视觉模型在任务目标、架构设计和关键性能结果上有何差异？<br data-page-node-id="7GD117b1QSXb1gmDKSHEBu"><span style="color:#888780" data-page-node-id="vh3XvCc7TXOTMhCGF9XBNo">Top1 得分 0.6962</span></div>
+
+</body></html>

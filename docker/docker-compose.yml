@@ -1,0 +1,29 @@
+# ============================================================
+# 一键编排：docker-compose up -d
+# 访问：http://localhost:8501
+# ============================================================
+services:
+  research-assistant:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: research-assistant
+    ports:
+      - "8501:8501"
+    environment:
+      # API Key 通过环境变量注入（也可改成 env_file: ../.env）
+      DASHSCOPE_API_KEY: ${DASHSCOPE_API_KEY}
+      APP_LLM__MODEL: ${APP_LLM_MODEL:-qwen-plus}
+      APP_LOGGING__LEVEL: INFO
+    volumes:
+      # 知识库索引持久化
+      - ../data:/app/data
+      # 日志持久化
+      - ../logs:/app/logs
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/_stcore/health"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
